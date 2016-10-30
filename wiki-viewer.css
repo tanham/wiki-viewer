@@ -1,0 +1,26 @@
+body{
+
+}
+
+.container{
+	margin: 0 auto;
+}
+
+.content{
+	margin-top: 100px;
+	text-align: center;
+
+}
+
+h1{
+
+}
+
+input{
+	font-size: 32px;
+}
+
+button{
+	font-size: 22px;
+
+}
