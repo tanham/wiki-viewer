@@ -1,1 +1,1 @@
-A wikipedia viewer written in Jaascript
+A wikipedia viewer written in Javascript
