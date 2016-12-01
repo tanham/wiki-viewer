@@ -8,26 +8,27 @@ window.onload = function randomButton() {
 	}
 }
 
+
 window.onload = function storeInput(){
-	var searchTerm = document.getElementById('input').value;
+	
 	var searchButton = document.getElementById('search');
 	
-	searchButton.addEventListener('click', printInput, false);
+	searchButton.addEventListener('click', doThing, false);
 	
-	function printInput() {
+	function doThing() {
+		var searchTerm = document.getElementById('input').value;
 		console.log(searchTerm);
-	}
-	var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + 
+
+		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + 
 		'&format=json&callback=?';
 
-	getXhr(customUrl, function(request){
-	    var response = request.target.responseText;
-	    console.log(response);
-	});
+		getXhr(customUrl, function(request){
+	    	var response = request.target.responseText;
+	    	console.log(response);
+		});
+	}
 };
 		
-	
-	
 
 function getXhr(url, success) {
 	    var xhr = new XMLHttpRequest();
