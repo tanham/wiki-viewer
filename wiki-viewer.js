@@ -8,7 +8,6 @@ window.onload = function randomButton() {
 	}
 }
 
-
 window.onload = function storeInput(){
 	
 	var searchButton = document.getElementById('search');
@@ -16,19 +15,27 @@ window.onload = function storeInput(){
 	searchButton.addEventListener('click', doThing, false);
 	
 	function doThing() {
-		var searchTerm = document.getElementById('input').value;
-		console.log(searchTerm);
+		var searchTerm = document.getElementById('input').value;	
 
 		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + 
 		'&format=json&callback=?';
 
-		getXhr(customUrl, function(request){
-	    	var response = request.target.responseText;
-	    	console.log(response);
+		var otherUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + searchTerm;
+
+		var baseUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
+
+
+		loadJSON(otherUrl, function response(data) {
+			var output = document.getElementById('output');
+			output.innerHTML = '';
+
+			for(var i = 0; i < data[1].length; i++) {
+				//var output = document.getElementById('output');
+				output.innerHTML = '<li><a href= '+data[3][i]+'>'+data[1][i]+'</a><p>'+data[2][i]+'</p></li>' + output.innerHTML ;
+			}
 		});
+
 	}
-};
-		
 
 function getXhr(url, success) {
 	    var xhr = new XMLHttpRequest();
@@ -38,27 +45,17 @@ function getXhr(url, success) {
 	    xhr.send();
 	    return xhr;
 	}
-	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function loadJSON(url, callback) {
+	var wikiViewer = new XMLHttpRequest();
+		wikiViewer.open('GET', url, true)
+		wikiViewer.onreadystatechange = function () {
+			if (wikiViewer.readyState === XMLHttpRequest.DONE) {
+        		var json = JSON.parse(wikiViewer.responseText)
+        		callback(json);
+			}
+		};
+		wikiViewer.send(null);
+	}
+}
