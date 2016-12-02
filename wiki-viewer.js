@@ -17,15 +17,9 @@ window.onload = function storeInput(){
 	function doThing() {
 		var searchTerm = document.getElementById('input').value;	
 
-		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + 
-		'&format=json&callback=?';
+		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + searchTerm;
 
-		var otherUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + searchTerm;
-
-		var baseUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
-
-
-		loadJSON(otherUrl, function response(data) {
+		loadJSON(customUrl, function response(data) {
 			var output = document.getElementById('output');
 			output.innerHTML = '';
 
