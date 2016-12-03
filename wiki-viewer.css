@@ -1,9 +1,10 @@
 body{
-
+	font-family: monospace;
 }
 
 .container{
 	margin: 0 auto;
+	max-width: 600px;
 }
 
 .content{
@@ -23,4 +24,21 @@ input{
 button{
 	font-size: 22px;
 
+}
+
+ul {
+
+}
+
+li {
+ list-style: none;
+ border: 1px black solid;
+ border-radius: 5px;
+ background-color: pink;
+}
+
+a {
+	text-decoration: none;
+	color: purple;
+	font-size: 22px;
 }

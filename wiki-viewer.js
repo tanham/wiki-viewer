@@ -1,20 +1,21 @@
-//retrieve random wikipedia page on click 
-window.onload = function randomButton() {
+function randomButton() {
+	//retrieve random wikipedia page on click 
 	var randomPage = document.getElementById('random');
-	randomPage.addEventListener('click', randomButton, false);
+	randomPage.addEventListener('click', redirect, false);
 
-	function randomButton() {
+	function redirect() {
 		window.location.assign('https://en.wikipedia.org/wiki/Special:Random');
 	}
 }
 
-window.onload = function storeInput(){
-	
+window.onload = function start(){
+	randomButton();
+
 	var searchButton = document.getElementById('search');
 	
-	searchButton.addEventListener('click', doThing, false);
+	searchButton.addEventListener('click', storeInput, false);
 	
-	function doThing() {
+	function storeInput() {
 		var searchTerm = document.getElementById('input').value;	
 
 		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + searchTerm;
@@ -29,15 +30,6 @@ window.onload = function storeInput(){
 			}
 		});
 
-	}
-
-function getXhr(url, success) {
-	    var xhr = new XMLHttpRequest();
-	    if (!('withCredentials' in xhr)) xhr = new XDomainRequest(); 
-	    xhr.open('GET', url);
-	    xhr.onload = success;
-	    xhr.send();
-	    return xhr;
 	}
 
 
