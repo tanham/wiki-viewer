@@ -1,3 +1,4 @@
+
 function randomButton() {
 	//retrieve random wikipedia page on click 
 	var randomPage = document.getElementById('random');
@@ -18,7 +19,7 @@ window.onload = function start(){
 	function storeInput() {
 		var searchTerm = document.getElementById('input').value;	
 
-		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + searchTerm;
+		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' + searchTerm;
 
 		loadJSON(customUrl, function response(data) {
 			var output = document.getElementById('output');
@@ -35,7 +36,7 @@ window.onload = function start(){
 
 function loadJSON(url, callback) {
 	var wikiViewer = new XMLHttpRequest();
-		wikiViewer.open('GET', url, true)
+		wikiViewer.open('GET', url, true);
 		wikiViewer.onreadystatechange = function () {
 			if (wikiViewer.readyState === XMLHttpRequest.DONE) {
         		var json = JSON.parse(wikiViewer.responseText)

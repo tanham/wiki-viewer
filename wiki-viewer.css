@@ -19,10 +19,13 @@ h1{
 
 input{
 	font-size: 32px;
+	border-radius: 20px;
 }
 
 button{
 	font-size: 22px;
+	border-radius: 5px;
+	background-color: hotpink;
 
 }
 
