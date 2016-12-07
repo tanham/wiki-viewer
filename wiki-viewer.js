@@ -1,4 +1,3 @@
-
 function randomButton() {
 	//retrieve random wikipedia page on click 
 	var randomPage = document.getElementById('random');
@@ -13,12 +12,10 @@ window.onload = function start(){
 	randomButton();
 
 	var searchButton = document.getElementById('search');
-	
 	searchButton.addEventListener('click', storeInput, false);
 	
 	function storeInput() {
 		var searchTerm = document.getElementById('input').value;	
-
 		var customUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' + searchTerm;
 
 		loadJSON(customUrl, function response(data) {
@@ -26,13 +23,10 @@ window.onload = function start(){
 			output.innerHTML = '';
 
 			for(var i = 0; i < data[1].length; i++) {
-				//var output = document.getElementById('output');
 				output.innerHTML = '<li><a href= '+data[3][i]+'>'+data[1][i]+'</a><p>'+data[2][i]+'</p></li>' + output.innerHTML ;
 			}
 		});
-
 	}
-
 
 function loadJSON(url, callback) {
 	var wikiViewer = new XMLHttpRequest();
