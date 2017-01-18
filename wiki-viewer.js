@@ -41,3 +41,18 @@ function loadJSON (url, callback) {
 		wikiViewer.send(null)
 	}
 }
+
+
+  colorLinks("#5c196b");
+
+  function colorLinks(hexColor)
+  {
+      var links = document.getElementsByTagName("a");
+      for(var i=0;i<links.length;i++)
+      {
+          if(links[i].href)
+          {
+              links[i].style.color = hexColor;  
+          }
+      }  
+  }
